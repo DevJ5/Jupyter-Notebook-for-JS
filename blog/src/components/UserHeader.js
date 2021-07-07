@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../actions';
 
 const UserHeader = ({ fetchUser, userId, user }) => {
-  useEffect(() => {
-    fetchUser(userId);
-  }, [fetchUser, userId]);
+  // useEffect(() => {
+  //   fetchUser(userId);
+  // }, [fetchUser, userId]);
 
   return user ? <div>{user.name}</div> : null;
 };

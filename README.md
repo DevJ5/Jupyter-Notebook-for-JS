@@ -1,1 +1,1 @@
-# Modern-React
+# React (with hooks) and Redux
