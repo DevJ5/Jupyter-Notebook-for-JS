@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { actionCreators } from '../state';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useActions } from '../hooks/useActions';
 
 const RepositoriesList: React.FC = () => {
   const [term, setTerm] = useState('');
-  const dispatch = useDispatch();
+  const { searchRepositories } = useActions();
+
+  // UseSelector doesnt work with typescript, so we have to create our own typed one:
+  const state = useTypedSelector((state) => state.repositories);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    dispatch(actionCreators.searchRepositories(term));
+    // This is the shorthand dispatch, made in the useActions hook:
+    searchRepositories(term);
   };
 
   return (
@@ -22,6 +26,11 @@ const RepositoriesList: React.FC = () => {
         />
         <button>Search</button>
       </form>
+      {state.error && <h3>{state.error}</h3>}
+      {state.loading && <h3>Loading...</h3>}
+      {!state.error &&
+        !state.loading &&
+        state.data.map((name) => <div key={name}>{name}</div>)}
     </div>
   );
 };
