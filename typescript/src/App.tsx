@@ -8,7 +8,7 @@ import EventComponent from './events/EventComponent';
 function App() {
   return (
     <div className="App">
-      <Parent></Parent>
+      <Parent>Submit</Parent>
       <GuestList></GuestList>
       <UserSearch></UserSearch>
       <EventComponent />

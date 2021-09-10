@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { ReactNode, ReactElement } from 'react';
 import { Child } from './child';
 
-const parent = () => {
+const defaultContainerProps = {
+  heading: <strong>Parent</strong>,
+};
+
+type ParentProps = { children: ReactNode } & typeof defaultContainerProps;
+
+const Parent = ({ children, heading }: ParentProps): ReactElement => {
   return (
-    <Child color="red" onClick={() => console.log('Clicked')}>
-      Submit
-    </Child>
+    <div>
+      {heading}
+      <Child color="red" onClick={() => console.log('Clicked')}>
+        {children}
+      </Child>
+    </div>
   );
 };
 
-export default parent;
+Parent.defaultProps = defaultContainerProps;
+
+export default Parent;
