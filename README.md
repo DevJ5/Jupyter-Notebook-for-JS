@@ -1,1 +1,1 @@
-# React (with hooks) and Redux
+# Jupyter Notebook for Javascript
