@@ -18,7 +18,30 @@ const DUMMY_MEETUPS = [
     description: 'This is a second meetup',
   },
 ];
-const Homepage = () => {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+
+const Homepage = (props) => {
+  return <MeetupList meetups={props.meetups} />;
 };
+
+// For accessing request (session cookies) and frequent page updates
+// export const getServerSideProps = (context) => {
+//   const req = context.req;
+//   const res = context.res;
+//   return {
+//     props: {
+//       meetups: DUMMY_MEETUPS,
+//     },
+//   };
+// };
+
+// For caching
+export const getStaticProps = async () => {
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+    revalidate: 1,
+  };
+};
+
 export default Homepage;
