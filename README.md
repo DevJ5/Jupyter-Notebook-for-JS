@@ -1,3 +1,3 @@
-# Jupyter Notebook for Javascript
+# Next JS
 
-Work in progress...
+Work in progress.
