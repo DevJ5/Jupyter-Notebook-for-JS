@@ -1,47 +1,55 @@
-import MeetupList from '../components/meetups/MeetupList';
+import Head from 'next/head';
+import { connectToDatabase } from '../lib/db';
 
-const DUMMY_MEETUPS = [
-  {
-    id: 'm1',
-    title: 'First meetup',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1920px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Some address 5, 12345 Some City',
-    description: 'This is a first meetup',
-  },
-  {
-    id: 'm2',
-    title: 'Second meetup',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1920px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Some address 5, 12345 Some City',
-    description: 'This is a second meetup',
-  },
-];
+import { DUMMY_ROOMS } from '../lib/dummy-rooms';
+
+import RoomList from '../components/rooms/RoomList';
 
 const Homepage = (props) => {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <>
+      <Head>
+        <title>Majestic Hotels</title>
+        <meta
+          name="description"
+          content="Browse through the best hotel rooms the world has to offer."></meta>
+      </Head>
+      <RoomList rooms={props.rooms} />
+    </>
+  );
 };
 
-// For accessing request (session cookies) and frequent page updates
+// For caching -> getStaticProps
+export const getStaticProps = async () => {
+  // Fetch data from a database if available, else use DUMMY_ROOMS
+  let rooms = DUMMY_ROOMS;
+  if (process.env.MONGODB_URI) {
+    const { db } = await connectToDatabase();
+    rooms = await db.collection('rooms').find().toArray();
+  }
+
+  return {
+    props: {
+      rooms: rooms.map(({ id, _id, title, image, address }) => ({
+        id: id || _id.toString(),
+        title,
+        image,
+        address,
+      })),
+    },
+    revalidate: 1,
+  };
+};
+
+// For accessing request (session cookies) and frequent page updates -> getServerSideProps
 // export const getServerSideProps = (context) => {
 //   const req = context.req;
 //   const res = context.res;
 //   return {
 //     props: {
-//       meetups: DUMMY_MEETUPS,
+//       rooms: DUMMY_ROOMS,
 //     },
 //   };
 // };
-
-// For caching
-export const getStaticProps = async () => {
-  return {
-    props: {
-      meetups: DUMMY_MEETUPS,
-    },
-    revalidate: 1,
-  };
-};
 
 export default Homepage;

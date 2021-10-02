@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 
 import Card from '../ui/Card';
-import classes from './MeetupItem.module.css';
+import classes from './RoomItem.module.css';
 
-function MeetupItem(props) {
+function RoomItem(props) {
   const router = useRouter();
 
   const showDetailsHandler = () => {
@@ -12,6 +12,7 @@ function MeetupItem(props) {
 
   return (
     <li className={classes.item}>
+      
       <Card>
         <div className={classes.image}>
           <img src={props.image} alt={props.title} />
@@ -28,4 +29,4 @@ function MeetupItem(props) {
   );
 }
 
-export default MeetupItem;
+export default RoomItem;

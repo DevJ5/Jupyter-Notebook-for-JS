@@ -18,11 +18,12 @@
 .content {
   text-align: center;
   padding: 1rem;
+  color: #ddd;
 }
 
 .content h3 {
   font-size: 1.25rem;
-  color: #2c292b;
+  padding: 2rem;
 }
 
 .actions {
@@ -31,16 +32,15 @@
 }
 
 .actions button {
-  font: inherit;
-  cursor: pointer;
-  color: #77002e;
-  border: 1px solid #77002e;
+  width: 15rem;
+  padding: 1.5rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #b85d1c;
   background-color: transparent;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-}
-
-.actions button:hover,
-.actions button:active {
-  background-color: #ffe2ed;
+  border: 0.1rem solid #b85d1c;
+  border-radius: 10rem;
+  outline: none;
+  cursor: pointer;
 }
