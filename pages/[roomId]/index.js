@@ -36,7 +36,7 @@ export const getStaticPaths = async () => {
         roomId: room._id.toString(),
       },
     })),
-    fallback: blocking,
+    fallback: 'blocking',
   };
 };
 
