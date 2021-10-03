@@ -46,7 +46,7 @@ const NewRoomPage = () => {
           name="description"
           content="Browse through the best hotel rooms the world has to offer."></meta>
       </Head>
-      <NewRoomForm onAddRoom={addRoomHandler} />;
+      <NewRoomForm onAddRoom={addRoomHandler} />
     </>
   );
 };

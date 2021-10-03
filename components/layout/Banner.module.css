@@ -1,0 +1,14 @@
+.banner {
+  height: 30vh;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+    url(https://img.freepik.com/vrije-photo/sunset-pool_1203-3192.jpg?size=626&ext=jpg)
+      center no-repeat;
+  background-size: cover;
+  color: #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

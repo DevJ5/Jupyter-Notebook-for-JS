@@ -3,6 +3,7 @@ import { connectToDatabase } from '../lib/db';
 
 import { DUMMY_ROOMS } from '../lib/dummy-rooms';
 
+import Banner from '../components/layout/Banner';
 import RoomList from '../components/rooms/RoomList';
 
 const Homepage = (props) => {
@@ -14,6 +15,7 @@ const Homepage = (props) => {
           name="description"
           content="Browse through the best hotel rooms the world has to offer."></meta>
       </Head>
+      <Banner></Banner>
       <RoomList rooms={props.rooms} />
     </>
   );

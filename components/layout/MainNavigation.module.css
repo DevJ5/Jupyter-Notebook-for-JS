@@ -4,13 +4,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #1c1c1c;
+  background-color: #15141b;
   padding: 0 10%;
 }
 
 .logo {
   font-size: 2rem;
-  color: goldenrod;
+  color: #b85d1c;
   font-weight: bold;
 }
 
@@ -29,11 +29,11 @@
 .header a {
   text-decoration: none;
   font-size: 1.5rem;
-  color: goldenrod;
+  color: #b85d1c;
 }
 
 .header a:hover,
 .header a:active,
 .header a.active {
-  color: goldenrod;
+  color: #b85d1c;
 }

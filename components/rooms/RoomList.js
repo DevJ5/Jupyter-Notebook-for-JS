@@ -2,6 +2,7 @@ import RoomItem from './RoomItem';
 import classes from './RoomList.module.css';
 
 function RoomList(props) {
+  console.log(props);
   return (
     <ul className={classes.list}>
       {props.rooms.map((room) => (

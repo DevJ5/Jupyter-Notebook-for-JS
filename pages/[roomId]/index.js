@@ -33,7 +33,7 @@ export const getStaticPaths = async () => {
   return {
     paths: rooms.map((room) => ({
       params: {
-        roomId: room.id || room._id.toString(),
+        roomId: room._id.toString(),
       },
     })),
     fallback: false,
@@ -48,10 +48,17 @@ export const getStaticProps = async (context) => {
     const roomsCollection = db.collection('rooms');
     selectedRoom = await roomsCollection.findOne({ _id: ObjectId(roomId) });
   }
+  console.log(selectedRoom);
 
   return {
     props: {
-      roomData: selectedRoom,
+      roomData: {
+        id: selectedRoom.id || selectedRoom._id.toString(),
+        title: selectedRoom.title,
+        image: selectedRoom.image,
+        address: selectedRoom.address,
+        description: selectedRoom.description,
+      },
     },
   };
 };
