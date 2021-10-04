@@ -44,7 +44,7 @@ export const getStaticProps = async () => {
 };
 
 // For accessing request (session cookies) and frequent page updates -> getServerSideProps
-// export const getServerSideProps = (context) => {
+// export const getServerSideProps =async(context) => {
 //   const req = context.req;
 //   const res = context.res;
 //   return {
